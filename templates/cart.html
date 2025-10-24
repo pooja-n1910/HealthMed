@@ -1,0 +1,15 @@
+<h2>Your Cart</h2>
+<ul>
+  {% for product in products %}
+    <li>
+      <img src="{{ url_for('static', filename='images/' + product.image) }}" width="100">
+      {{ product.name }} - ₹{{ product.price }}
+    </li>
+  {% endfor %}
+</ul>
+<a href="/dashboard">Back to Dashboard</a>
+
+<form action="/invoice">
+  <button type="submit">Download Invoice</button>
+</form>
+

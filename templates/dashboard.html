@@ -1,0 +1,35 @@
+<form method="GET" action="/search">
+  <input type="text" name="query" placeholder="Search medicines...">
+  <button type="submit">Search</button>
+</form>
+<h2>Dashboard</h2>
+<ul>
+  {% for product in products %}
+    <li>
+      <img src="{{ url_for('static', filename='images/' + product.image) }}" width="100">
+      {{ product.name }} - ₹{{ product.price }} ({{ product.category }})
+    </li>
+  {% endfor %}
+</ul>
+
+<!-- Chatbot -->
+<div id="chatbot" style="position:fixed;bottom:20px;right:20px;">
+  <button onclick="toggleChat()">💬 Chat</button>
+  <div id="chatbox" style="display:none;">
+    <input type="text" id="chatInput" placeholder="Ask about medicines...">
+    <button onclick="sendChat()">Send</button>
+    <div id="chatResponse"></div>
+  </div>
+</div>
+
+<script>
+function toggleChat() {
+  const box = document.getElementById('chatbox');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+}
+function sendChat() {
+  const input = document.getElementById('chatInput').value;
+  document.getElementById('chatResponse').innerText = "Searching for: " + input;
+}
+</script>
+
