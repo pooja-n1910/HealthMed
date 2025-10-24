@@ -1,9 +1,14 @@
 FROM python:3.10-slim
 
-# Fix missing package index and install system dependencies
+# Prevent interactive prompts during package install
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install system dependencies for WeasyPrint and apt tools
 RUN apt-get update && apt-get install -y \
     apt-utils \
     ca-certificates \
+    curl \
+    gnupg \
     build-essential \
     libpango-1.0-0 \
     libcairo2 \
