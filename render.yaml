@@ -3,4 +3,5 @@ services:
     name: healthmed
     env: python
     buildCommand: ""
-    startCommand: "python app.py"
+    startCommand: "python seed.py"
+
